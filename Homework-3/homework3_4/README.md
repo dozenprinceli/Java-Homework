@@ -1,4 +1,4 @@
-### 按要求编写Java程序
+### 4. 按要求编写Java程序
 #### 编写2个接口：InterfaceA和InterfaceB
 在接口InterfaceA中有个方法void printCapitalLetter()；
 
