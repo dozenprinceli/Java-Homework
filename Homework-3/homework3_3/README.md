@@ -1,4 +1,4 @@
-### 按要求编写Java应用程序
+### 3. 按要求编写Java应用程序
 #### 创建项目testpackage
 在该项目下创建包pack1和包pack2
 
