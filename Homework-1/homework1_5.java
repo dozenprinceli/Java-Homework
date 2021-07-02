@@ -1,41 +1,28 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
+/**
+ * 有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中
+ */
 public class homework1_5 {
     public static void main(String[] args) {
-        double[] NumList = new double[10];
-        for (int i = 0;i <= 9;i++) {
-            NumList[i] = 3.9 * i - 5;
-        }
-        double[] NewList = new double[NumList.length + 1];
-        System.out.println("Enter a number:");
-        Scanner input = new Scanner(System.in);
-        double NewNum = input.nextDouble();
-        input.close();
-        if (NewNum < NumList[0]) {
-            NewList[0] = NewNum;
-            for (int i = 1;i <= NewList.length - 1;i++) {
-                NewList[i] = NumList[i - 1];
-            }
-        }else if (NewNum >= NumList[NumList.length - 1]) {
-            for (int i = 0;i <= NewList.length - 2;i++) {
-                NewList[i] = NumList[i];
-            }
-            NewList[NewList.length - 1] = NewNum;
-        }else {
-            int position = 0;
-            for (int i = 0;i <= NumList.length - 1;i++) {
-                position++;
-                if (NewNum >= NumList[i] && NewNum < NumList[i + 1]) break;
-            }
-            for (int i = 0;i < position;i++) {
-                NewList[i] = NumList[i];
-            }
-            NewList[position] = NewNum;
-            for (int i = position;i <= NewList.length - 2;i++) {
-                NewList[i + 1] = NumList[i];
-            }
-        }
-        System.out.println(Arrays.toString(NewList));
+        System.out.println("输入一个列表，用空格分隔元素");
+        Scanner inputScanner = new Scanner(System.in);
+        String inputStr = inputScanner.nextLine().toString();
+        String[] inputStrArray = inputStr.split("\u0020");
+        List<Double> TestList = new ArrayList<Double>();
+        for (String str : inputStrArray) TestList.add(Double.valueOf(str));
+        
+        Collections.sort(TestList);
+        System.out.println("排序后的列表为 " + TestList.toString());
+        
+        System.out.println("输入一个double型的数进行插入操作");
+        double insertNum = inputScanner.nextDouble();
+        inputScanner.close();
+        TestList.add(insertNum);
+        Collections.sort(TestList);
+        System.out.println("完成插入操作后，新列表为\n" + TestList.toString());
     }
 }
