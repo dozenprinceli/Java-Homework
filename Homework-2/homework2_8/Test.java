@@ -1,5 +1,8 @@
 package homework2_8;
 
+/**
+ * Test类，用于测试MotorVehicle类
+ */
 public class Test {
     public static void main(String[] args) {
         MotorVehicle v1 = new MotorVehicle();
