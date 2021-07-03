@@ -1,48 +1,75 @@
 package homework2_7;
 
+/**
+ * 人物类。通过姓名、年龄、性别、身高初始化一个人物对象
+ */
 public class People {
-    String name;
-    int age;
-    double height;
-    boolean sexual;
+    public static final int MALE = 1;
+    public static final int FEMALE = 2;
+    
+    private String name;
+    private int age;
+    private double height;
+    private int sexual;
 
-    People(String name,int age,double height,String sexual) {
+    /**
+     * 初始化一个人物对象
+     * @param name 姓名
+     * @param age 年龄
+     * @param height 身高
+     * @param sexual 性别
+     * @throws IllegalArgumentException("AgeRangeException") 若年龄为负数
+     * @throws IllegalArgumentException("HeightRangeException") 若身高为负数
+     * @throws IllegalArgumentException("SexualRangeError") 若性别参数不为1或2
+     */
+    public People(String name, int age, double height, int sexual) {
         this.name = name;
         
-        if(age <= 0) {
-            System.out.println("Age Range Error!");
-            System.exit(1);
-        }
+        // Exception handling
+        if(age <= 0) throw new IllegalArgumentException("AgeRangeException");
         else this.age = age;
         
-        if(height <= 0) {
-            System.out.println("Height Range Error!");
-            System.exit(1);
-        }
+        // Exception handling
+        if(height <= 0) throw new IllegalArgumentException("HeightRangeException");
         else this.height = height;
 
-        if(sexual.compareTo("男") == 0 || sexual.compareToIgnoreCase("male") == 0) {
-            this.sexual = true;
-        }
-        else if(sexual.compareTo("女") == 0 || sexual.compareToIgnoreCase("female") == 0) {
-            this.sexual = false;
-        }
-        else {
-            System.out.println("Sexual Input Error!");
-            System.exit(1);
-        }
+        // Exception handling
+        if (sexual != MALE && sexual != FEMALE) throw new IllegalArgumentException("SexualRangeError");
+        else this.sexual = sexual;
     }
 
-    
-    void Talk(String words) {
+    /**
+     * 让人物说话，输出要说的话
+     * @param words 说话的内容
+     */
+    public void Talk(String words) {
         System.out.println(name + " says:\"" + words + "\"");
     }
 
-    void doPlus(int a, int b) {
-        System.out.println(a+b);
+    /**
+     * 做加法
+     * @param a 加数1
+     * @param b 加数2
+     * @return 两数之和，并将和输出在控制台
+     */
+    public int doPlus(int a, int b) {
+        System.out.println(a + b);
+        return a + b;
     }
 
-    void changeName(String newName) {
+    /**
+     * 修改人物的姓名
+     * @param newName 新的姓名
+     */
+    public void changeName(String newName) {
         name = newName;
+    }
+
+    /**
+     * 获取姓名
+     * @return 人物的姓名
+     */
+    public String getName() {
+        return name;
     }
 }
